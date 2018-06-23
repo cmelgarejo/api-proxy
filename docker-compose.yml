@@ -1,0 +1,34 @@
+version: "3"
+services:
+  dev:
+    build: .
+    working_dir: /api
+    command: "yarn run dev"
+    ports:
+      - "8888:8888"
+    volumes:
+      - .:/api
+    environment:
+      - NODE_ENV=development
+      - NODE_PATH=src/
+      - API_PORT=8888
+      - API_NAME=API Proxy
+      - API_VERSION=1.0.0
+      - API_DESCRIPTION=Simple API Proxy project - no storage layer, proxies results from underlaying APIs
+      - API_RESPONSE_VERBOSE=false
+      - VEHICLE_API_BASE_URL=https://one.nhtsa.gov/webapi/api/SafetyRatings
+  prod:
+    build: .
+    working_dir: /api
+    command: "yarn run prod"
+    ports:
+      - "80:8888"
+    environment:
+      - NODE_ENV=production
+      - NODE_PATH=src/
+      - API_PORT=8888
+      - API_NAME=API Proxy
+      - API_VERSION=1.0.0
+      - API_DESCRIPTION=Simple API Proxy project - no storage layer, proxies results from underlaying APIs
+      - API_RESPONSE_VERBOSE=false
+      - VEHICLE_API_BASE_URL=https://one.nhtsa.gov/webapi/api/SafetyRatings

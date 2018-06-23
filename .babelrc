@@ -1,0 +1,24 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "node": "current"
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    ["transform-object-rest-spread"],
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "alias": {
+          "apiProxy": ["./src"]
+        }
+      }
+    ]
+  ]
+}
